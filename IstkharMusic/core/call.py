@@ -7,7 +7,7 @@ from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup
 
 from pytgcalls import PyTgCalls
-from pytgcalls.types.stream import StreamType
+# from pytgcalls.types.stream import StreamType  # <-- REMOVE THIS LINE
 from pytgcalls.exceptions import (
     AlreadyJoinedError,
     NoActiveGroupCall,
@@ -44,12 +44,10 @@ from strings import get_string
 autoend = {}
 counter = {}
 
-
 async def _clear_(chat_id):
     db[chat_id] = []
     await remove_active_video_chat(chat_id)
     await remove_active_chat(chat_id)
-
 
 class Call(PyTgCalls):
     def __init__(self):
@@ -313,7 +311,7 @@ class Call(PyTgCalls):
             await assistant.join_group_call(
                 chat_id,
                 stream,
-                stream_type=StreamType().pulse_stream,
+                stream_type="pulse_stream",  # <-- UPDATED HERE
             )
         except NoActiveGroupCall:
             raise AssistantErr(_["call_8"])
@@ -598,6 +596,5 @@ class Call(PyTgCalls):
             if not isinstance(update, StreamAudioEnded):
                 return
             await self.change_stream(client, update.chat_id)
-
 
 Istkhar = Call()

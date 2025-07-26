@@ -13,7 +13,6 @@ from pytgcalls import PyTgCalls
 # AlreadyJoinedError removed from here
 from pytgcalls.exceptions import (
     NoActiveGroupCall,
-    GroupCallNotFound,
     NotInGroupCallError,
 )
 from pytgcalls.types import Update

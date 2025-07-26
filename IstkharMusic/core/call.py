@@ -599,7 +599,7 @@ class Call(PyTgCalls):
                 return
             await self.change_stream(client, update.chat_id)
 
-Istkhar = Call()nion
+Istkhar = Call()
 
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup
